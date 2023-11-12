@@ -15,13 +15,13 @@ export const listContacts = async () => {
 }
 
 export const getContactById = async (contactId) => {
-    const contacts = listContacts();
+    const contacts = await listContacts();
     const result = contacts.find(contact => contact.id === contactId);
     return result || null;
 }
 
 export const addContact = async ({ name, email, phone }) => {
-    const contacts = listContacts();
+    const contacts = await listContacts();
     const newContact = {
         id: nanoid(),
         name,

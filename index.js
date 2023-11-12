@@ -6,17 +6,17 @@ import { listContacts, getContactById, addContact, deleteById } from "./contacts
 const invokeAction = async ( {action, id, name, email, phone} ) => {
     switch (action) {
         case "list":
-            const allContacts = await contactServise.listContacts();
+            const allContacts = await listContacts();
             return console.table(allContacts);
         case 'get':
-            const oneContact = await contactServise.getContactById(id);
-            return console.table(oneContact);
+            const oneContact = await getContactById(id);
+            return console.log(oneContact);
         case 'add':
-            const newContact = await contactServise.addContact({ name, email, phone });
+            const newContact = await addContact({ name, email, phone });
             return console.log(newContact);
         case 'remove':
-            const removeContact = await contactServise.deleteById(id);
-            return console.table(removeContact);
+            const removeContact = await deleteById(id);
+            return console.log(removeContact);
         default:
             return console.warn('\x1B[31m Unknown action type!');
 
